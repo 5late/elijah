@@ -4,17 +4,29 @@ import (
 	"fmt"
 	"io/ioutil"
 	"log"
+	"os"
 	"path/filepath"
 	"time"
 
 	"github.com/go-git/go-git/v5"
 	"github.com/go-git/go-git/v5/plumbing/object"
+	"github.com/go-git/go-git/v5/plumbing/transport/http"
+	"github.com/joho/godotenv"
 )
 
 // Example of how to open a repository in a specific path, and push to
 // its default remote (origin).
 func main() {
-	path := "/home/all/repos/elijah"
+	godotenv.Load(".env")
+
+	path := "/home/all/repos/elijah/"
+	username := os.Getenv("username")
+	fmt.Println(username)
+	password := os.Getenv("password")
+	var auth = &http.BasicAuth{
+		Username: username,
+		Password: password,
+	}
 
 	// Opens an already existing repository.
 	r, err := git.PlainOpen(path)
@@ -78,7 +90,10 @@ func main() {
 	fmt.Println(obj)
 
 	// push using default options
-	err = r.Push(&git.PushOptions{})
+	err = r.Push(&git.PushOptions{
+		RemoteName: "origin",
+		Auth:       auth,
+	})
 	if err != nil {
 		log.Fatal(err)
 	}
