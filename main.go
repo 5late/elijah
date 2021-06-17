@@ -19,6 +19,26 @@ const chunkSize = 64000
 var filename = "example-file.txt"
 var comparer = "example-file2.txt"
 
+func Copy(src, target string) error {
+	in, err := os.Open(src)
+	if err != nil {
+		return err
+	}
+	defer in.Close()
+
+	out, err := os.Create(target)
+	if err != nil {
+		return err
+	}
+	defer out.Close()
+
+	_, err = io.Copy(out, in)
+	if err != nil {
+		return err
+	}
+	return out.Close()
+}
+
 func deepCompare(file1, file2 string) bool {
 	// Check file size ...
 
@@ -133,4 +153,5 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
+	Copy(filename, comparer)
 }
