@@ -12,8 +12,6 @@ import (
 	"github.com/joho/godotenv"
 )
 
-// Example of how to open a repository in a specific path, and push to
-// its default remote (origin).
 func main() {
 	godotenv.Load(".env")
 
@@ -78,7 +76,7 @@ func main() {
 
 	fmt.Println(obj)
 
-	// push using default options (auth and remote name)
+	// push using default options (auth and remote name defined at top of file)
 
 	err = r.Push(&git.PushOptions{
 		RemoteName: remotename,
