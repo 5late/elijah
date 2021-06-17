@@ -2,10 +2,8 @@ package main
 
 import (
 	"fmt"
-	"io/ioutil"
 	"log"
 	"os"
-	"path/filepath"
 	"time"
 
 	"github.com/go-git/go-git/v5"
@@ -19,16 +17,18 @@ import (
 func main() {
 	godotenv.Load(".env")
 
-	path := "/home/all/repos/elijah/"
 	username := os.Getenv("username")
-	fmt.Println(username)
 	password := os.Getenv("password")
 	var auth = &http.BasicAuth{
 		Username: username,
 		Password: password,
 	}
 
-	// Opens an already existing repository.
+	path := "/home/all/repos/elijah/"
+	filename := "main.go"
+	remotename := "origin"
+
+	// Opens existing repository
 	r, err := git.PlainOpen(path)
 	if err != nil {
 		log.Fatal(err)
@@ -39,18 +39,9 @@ func main() {
 		log.Fatal(err)
 	}
 
-	// ... we need a file to commit so let's create a new file inside of the
-	// worktree of the project using the go standard library.
+	// Adds the file to the staging area
 
-	filename := filepath.Join(path, "example-git-file")
-	err = ioutil.WriteFile(filename, []byte("hello world!"), 0644)
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	// Adds the new file to the staging area.
-
-	_, err = w.Add("example-git-file")
+	_, err = w.Add(filename)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -64,12 +55,9 @@ func main() {
 
 	fmt.Println(status)
 
-	// Commits the current staging area to the repository, with the new file
-	// just created. We should provide the object.Signature of Author of the
-	// commit Since version 5.0.1, we can omit the Author signature, being read
-	// from the git config files.
+	//Commit the file
 
-	commit, err := w.Commit("example go-git commit", &git.CommitOptions{
+	commit, err := w.Commit(filename, &git.CommitOptions{
 		Author: &object.Signature{
 			Name:  "5|ate",
 			Email: "christianrfernandes5@gmail.com",
@@ -80,7 +68,7 @@ func main() {
 		log.Fatal(err)
 	}
 
-	// Prints the current HEAD to verify that all worked well.
+	// Prints the current HEAD to verify that all worked well
 
 	obj, err := r.CommitObject(commit)
 	if err != nil {
@@ -89,9 +77,10 @@ func main() {
 
 	fmt.Println(obj)
 
-	// push using default options
+	// push using default options (auth and remote name)
+
 	err = r.Push(&git.PushOptions{
-		RemoteName: "origin",
+		RemoteName: remotename,
 		Auth:       auth,
 	})
 	if err != nil {
