@@ -1,6 +1,6 @@
 # Elijah
 
-**Automate pushing files to github**
+**Automate pushing files to github in Go**
 
 ## How to use
 
@@ -18,4 +18,4 @@
 
 ## License
 
-Licensed under Apache 2.0. Visit the [LICENSE] file to learn more.
+Licensed under Apache 2.0. Visit the [LICENSE](LICENSE) file to learn more.
