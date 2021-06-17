@@ -1,6 +1,6 @@
 # Elijah
 
-**Automate pushing files to github**
+**Automate pushing files to github in Go**
 
 ## How to use
 
