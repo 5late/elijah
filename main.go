@@ -27,7 +27,7 @@ func main() {
 	path := "/home/all/repos/elijah/"
 	filename := "main.go"
 	remotename := "origin"
-	commitmessage := ("%v file auto-committed and pushed to GitHub" + filename)
+	commitmessage := (filename + " | file auto-committed and pushed to GitHub ~5late")
 
 	// Opens existing repository
 	r, err := git.PlainOpen(path)
