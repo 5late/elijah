@@ -18,4 +18,4 @@
 
 ## License
 
-Licensed under Apache 2.0. Visit the [LICENSE] file to learn more.
+Licensed under Apache 2.0. Visit the [LICENSE](LICENSE) file to learn more.
