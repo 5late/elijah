@@ -22,7 +22,9 @@ func checkForChanges() bool {
 }
 
 func main() {
-	fmt.Print(checkForChanges())
+	if checkForChanges() {
+		return
+	}
 	// We instantiate a new repository targeting the given path (the .git folder)
 	r, err := git.PlainOpen(path)
 	if err != nil {
