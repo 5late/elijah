@@ -81,7 +81,7 @@ func main() {
 	if deepCompare(filename, comparer) {
 		return
 	}
-	godotenv.Load(".env")
+	godotenv.Load("../.env")
 
 	email := os.Getenv("email")
 	username := os.Getenv("username")
@@ -91,7 +91,7 @@ func main() {
 		Password: password,
 	}
 
-	path := "/home/all/repos/elijah/"
+	path := "/home/all/repos/elijah/push"
 
 	remotename := "origin"
 	commitmessage := (filename + " | file auto-committed and pushed to GitHub ~5late")
