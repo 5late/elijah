@@ -83,6 +83,7 @@ func main() {
 	}
 	godotenv.Load(".env")
 
+	email := os.Getenv("email")
 	username := os.Getenv("username")
 	password := os.Getenv("password")
 	var auth = &http.BasicAuth{
@@ -126,8 +127,8 @@ func main() {
 
 	commit, err := w.Commit(commitmessage, &git.CommitOptions{
 		Author: &object.Signature{
-			Name:  "5|ate",
-			Email: "christianrfernandes5@gmail.com",
+			Name:  username,
+			Email: email,
 			When:  time.Now(),
 		},
 	})
