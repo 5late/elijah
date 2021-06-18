@@ -3,7 +3,6 @@ package main
 import (
 	"fmt"
 	"io"
-	"io/ioutil"
 	"log"
 	"os"
 
@@ -13,22 +12,6 @@ import (
 var path = "/home/all/repos/elijah/"
 var filename = "../push/example-file.txt"
 var comparer = "../push/example-file2.txt"
-
-func mainCheck() bool {
-	data, err := ioutil.ReadFile(filename)
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	secondData, err := ioutil.ReadFile(comparer)
-	if err != nil {
-		log.Fatal(err)
-	}
-	print(string(secondData))
-	print(string(data))
-
-	return string(secondData) == string(data)
-}
 
 func Copy(src, target string) error {
 	in, err := os.Open(src)
@@ -64,7 +47,6 @@ func checkForChanges() bool {
 
 func main() {
 	if checkForChanges() {
-		mainCheck()
 		return
 	}
 	// We instantiate a new repository targeting the given path (the .git folder)
