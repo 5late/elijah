@@ -12,7 +12,7 @@
 
 ### Uses [go-git](https://github.com/go-git/go-git)
 
-**A lot of the code can be found in the [_examples](https://github.com/go-git/go-git/tree/master/_examples) folder**
+**A lot of the code here can be found in the [_examples](https://github.com/go-git/go-git/tree/master/_examples) folder**
 
 - I have added auth and got it to properly work for me, as well as removed some of the functions to make it simpler.
 
