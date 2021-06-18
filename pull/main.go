@@ -10,13 +10,11 @@ import (
 	"github.com/go-git/go-git/v5"
 )
 
-const chunkSize = 64000
-
 var path = "/home/all/repos/elijah/"
 var filename = "../push/example-file.txt"
 var comparer = "../push/example-file2.txt"
 
-func mainCheck() {
+func mainCheck() bool {
 	data, err := ioutil.ReadFile(filename)
 	if err != nil {
 		log.Fatal(err)
@@ -29,9 +27,7 @@ func mainCheck() {
 	print(string(secondData))
 	print(string(data))
 
-	if string(secondData) == string(data) {
-		print("same")
-	}
+	return string(secondData) == string(data)
 }
 
 func Copy(src, target string) error {
