@@ -49,6 +49,7 @@ func main() {
 	if checkForChanges() {
 		return
 	}
+	Copy(filename, comparer)
 	// We instantiate a new repository targeting the given path (the .git folder)
 	r, err := git.PlainOpen(path)
 	if err != nil {
@@ -77,5 +78,4 @@ func main() {
 	}
 
 	fmt.Println(commit)
-	Copy(filename, comparer)
 }
