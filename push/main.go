@@ -16,8 +16,8 @@ import (
 
 const chunkSize = 64000
 
-var filename = "example-file.txt"
-var comparer = "example-file2.txt"
+var filename = "push/example-file.txt"
+var comparer = "push/example-file2.txt"
 
 func Copy(src, target string) error {
 	in, err := os.Open(src)
