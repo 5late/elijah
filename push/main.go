@@ -109,7 +109,7 @@ func main() {
 
 	// Adds the file to the staging area
 
-	_, err = w.Add(filename)
+	_, err = w.Add("example-file.txt")
 	if err != nil {
 		log.Fatal("cant add file", err)
 	}
