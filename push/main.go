@@ -16,8 +16,8 @@ import (
 
 const chunkSize = 64000
 
-var filename = "example-file.txt"
-var comparer = "example-file2.txt"
+var filename = "/home/all/repos/elijah/push/example-file.txt"
+var comparer = "/home/all/repos/elijah/push/example-file2.txt"
 
 func Copy(src, target string) error {
 	in, err := os.Open(src)
@@ -81,7 +81,7 @@ func main() {
 	if deepCompare(filename, comparer) {
 		return
 	}
-	godotenv.Load("../.env")
+	godotenv.Load(".env")
 
 	email := os.Getenv("email")
 	username := os.Getenv("username")
@@ -91,7 +91,7 @@ func main() {
 		Password: password,
 	}
 
-	path := "/home/all/repos/elijah/push"
+	path := "/home/all/repos/elijah/"
 
 	remotename := "origin"
 	commitmessage := (filename + " | file auto-committed and pushed to GitHub ~5late")
@@ -99,7 +99,7 @@ func main() {
 	// Opens existing repository
 	r, err := git.PlainOpen(path)
 	if err != nil {
-		log.Fatal(err)
+		log.Fatal("cant open git", err)
 	}
 
 	w, err := r.Worktree()
@@ -111,14 +111,14 @@ func main() {
 
 	_, err = w.Add(filename)
 	if err != nil {
-		log.Fatal(err)
+		log.Fatal("cant add file", err)
 	}
 
 	// We can verify the current status of the worktree using the method Status.
 
 	status, err := w.Status()
 	if err != nil {
-		log.Fatal(err)
+		log.Fatal("cant add file2", err)
 	}
 
 	fmt.Println(status)
