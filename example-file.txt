@@ -1,6 +1,0 @@
-Hello World!
-This is a new line
-test cron job
-test again
-discord test, lets hope for the best!
-test
