@@ -16,8 +16,8 @@ import (
 
 const chunkSize = 64000
 
-var filename = "/home/all/repos/elijah/example-file.txt"
-var comparer = "/home/all/repos/elijah/example-file2.txt"
+var filename = "example-file.txt"
+var comparer = "example-file2.txt"
 
 func Copy(src, target string) error {
 	in, err := os.Open(src)
@@ -109,7 +109,7 @@ func main() {
 
 	// Adds the file to the staging area
 
-	_, err = w.Add("example-file.txt")
+	_, err = w.Add(filename)
 	if err != nil {
 		log.Fatal("cant add file", err)
 	}
