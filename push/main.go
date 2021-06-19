@@ -111,7 +111,7 @@ func main() {
 
 	_, err = w.Add(filename)
 	if err != nil {
-		log.Fatal("cant add file", err)
+		log.Fatal("cant add file ", err)
 	}
 
 	// We can verify the current status of the worktree using the method Status.

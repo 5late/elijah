@@ -46,9 +46,9 @@ func checkForChanges() bool {
 }
 
 func main() {
-	if checkForChanges() {
+	/*if !checkForChanges() {
 		return
-	}
+	}*/
 	Copy(filename, comparer)
 	// We instantiate a new repository targeting the given path (the .git folder)
 	r, err := git.PlainOpen(path)
